@@ -11,6 +11,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	CPthat pthat(new Cthat);
 	pthat->doIt();
+	
 	static_cast<Cthat*>(pthat)->doIt();
 
 	delete aThat;

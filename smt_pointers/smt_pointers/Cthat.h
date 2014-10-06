@@ -1,4 +1,7 @@
+
 #pragma once
+#include <iostream>
+
 
 class Cthat
 {
@@ -12,7 +15,7 @@ class CPthat
 private:
 	Cthat* aThat;
 public:
-	CPthat(Cthat* _that= nullptr):aThat(_that){};
+	CPthat(Cthat* _that= NULL):aThat(_that){};
 	~CPthat(){ if (aThat) delete aThat;};
 	operator Cthat* (){return aThat;}; // Оператор преобразования типа
 	Cthat* operator->() {return aThat;}; // Оператор селектора ->
@@ -28,7 +31,14 @@ public:
 	sPointer(T* _t= nullptr):tObj(_t){};
 	~sPointer(){if (tObj) delete tObj; };
 	operator T*() {return tObj;}
-	T* operator->(){return tObj;};
+	T* operator->() {
+		if (!tObj)
+	{
+		std::cerr<<"NULL";
+		tObj = new T;
+	}
+	return tObj;
+	}
 
 
 };
